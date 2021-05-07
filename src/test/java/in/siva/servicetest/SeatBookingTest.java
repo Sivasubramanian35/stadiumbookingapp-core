@@ -3,6 +3,8 @@ package in.siva.servicetest;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
+
 import org.junit.Test;
 
 import in.siva.service.BookingManager;
@@ -10,25 +12,25 @@ import in.siva.service.BookingManager;
 public class SeatBookingTest {
 
 	/**
-	 * Test With invalid name
+	 * Test With invalid data
 	 */
 	@Test
-	public void testWithInvalidName() {
-		String name = " ";
-		int seatNo = -12;
-		boolean booking = BookingManager.bookSeat(name, seatNo);
+	public void testWithInvalidData() {
+		int noOfSeats = 40;
+		LocalDate date = LocalDate.parse("2021-05-03");
+		boolean booking = BookingManager.bookSeat(noOfSeats, date);
 		assertFalse(booking);
 
 	}
 
 	/**
-	 * Test With valid name
+	 * Test With valid data
 	 */
 	@Test
-	public void testWithValidName() {
-		String name = "siva";
-		int seatNo = 10;
-		boolean booking = BookingManager.bookSeat(name, seatNo);
+	public void testWithValidData() {
+		int noOfSeats = 5;
+		LocalDate date = LocalDate.parse("2021-05-03");
+		boolean booking = BookingManager.bookSeat(noOfSeats, date);
 		assertTrue(booking);
 	}
 

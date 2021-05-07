@@ -1,69 +1,43 @@
 package in.siva.service;
 
-import java.util.HashMap;
-import java.util.Set;
+import java.time.LocalDate;
 
-import in.siva.validator.SeatNoValidator;
+import java.util.HashMap;
 
 public class SeatManager {
 
-	static HashMap<String, Integer> bookingList = new HashMap<String, Integer>();
+	static HashMap<LocalDate, Integer> noOfBookedSeats = new HashMap<LocalDate, Integer>();
 	static {
-		bookingList.put("sankar", 22);
-		bookingList.put("mani", 10);
+		noOfBookedSeats.put(LocalDate.parse("2021-05-03"), 20);
+		noOfBookedSeats.put(LocalDate.parse("2021-05-04"), 4);
 	}
 
 	/**
-	 * This method used to get the price of seat number
+	 * This method is used to allocate seats.
 	 * 
-	 * @param seatNo
-	 * @return
+	 * @param date
+	 * @param noOfSeats
 	 */
-	public static void getSeatPrice(int seatNo) {
-		int price = 0;
-		boolean valid = true;
-		if (1 <= seatNo && seatNo <= 10) {
-			price = 500;
-		} else if (11 <= seatNo && seatNo <= 20) {
-			price = 1000;
-		} else if (21 <= seatNo && seatNo <= 30) {
-			price = 1500;
-		} else {
-			System.out.println("Invalid seat number");
-			valid = false;
-		}
-		if (valid) {
-			System.out.println("Price for seat number " + seatNo + "---->Rs." + price);
-		}
+	public static void allocateSeats(LocalDate date, int noOfSeats) {
+		int seats = noOfBookedSeats.get(date) != null ? noOfBookedSeats.get(date) : 0;
+		seats = seats + noOfSeats;
+		noOfBookedSeats.put(date, seats);
 	}
 
 	/**
-	 * This method returns true if seats are available otherwise returns false
+	 * This method returns number of available seats
 	 * 
-	 * @param seatNo
+	 * @param date
 	 * @return
 	 */
-	public static boolean checkAvailability(int seatNo) {
+	public static int checkAvailability(LocalDate date) {
 
-		boolean available = true;
-		Set<String> nameList = bookingList.keySet();
-		if (SeatNoValidator.isValidSeatNo(seatNo)) {
-			for (String names : nameList) {
-				int seatNumber = bookingList.get(names);
-				if (seatNo == seatNumber) {
-					System.out.println("Not Available");
-					available = false;
-					break;
-				}
-			}
-		} else {
-			System.out.println("Invalid seatNo");
-			available = false;
-		}
-		if (available) {
-			System.out.println("Available");
-		}
-		return available;
+		int totalseats = 30;
+		int availableSeats;
+		Integer bookedSeats = noOfBookedSeats.get(date) != null ? noOfBookedSeats.get(date) : 0;
+		availableSeats = totalseats - bookedSeats;
+		return availableSeats;
+
 	}
 
 }

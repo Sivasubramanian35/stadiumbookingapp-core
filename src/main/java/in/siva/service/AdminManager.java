@@ -3,7 +3,8 @@ package in.siva.service;
 import java.util.HashSet;
 
 import in.siva.model.Matches;
-import in.siva.validator.StringValidator;
+
+import in.siva.validator.TeamNameValidator;
 
 import java.time.LocalDate;
 
@@ -34,7 +35,7 @@ public class AdminManager {
 	public static String getMatchDate(String team1, String team2) {
 		String matchDate = "Not Available";
 		// Iterate the set matchWithDate
-		if (StringValidator.isValidString(team1) && StringValidator.isValidString(team2)) {
+		if (TeamNameValidator.isValidTeamName(team1) && TeamNameValidator.isValidTeamName(team2)) {
 			for (Matches matchDetails : matchesWithDate) {
 				if (matchDetails.team1.equalsIgnoreCase(team1) && matchDetails.team2.equalsIgnoreCase(team2)) {
 					matchDate = matchDetails.matchDate.toString();
