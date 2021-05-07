@@ -12,7 +12,7 @@ public class SeatPriceTest {
 	@Test
 	public void testWithInvalidSeatNo() {
 		int seatNo = -9;
-		SeatManager.getPrice(seatNo);
+		SeatManager.getSeatPrice(seatNo);
 	}
 
 	/**
@@ -21,7 +21,7 @@ public class SeatPriceTest {
 	@Test
 	public void testWithSeatNo() {
 		int seatNo = 15;
-		SeatManager.getPrice(seatNo);
+		SeatManager.getSeatPrice(seatNo);
 	}
 
 }

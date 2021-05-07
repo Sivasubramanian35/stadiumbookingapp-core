@@ -21,16 +21,18 @@ public class BookingManager {
 	 * @param seatNo
 	 */
 
-	public static void bookSeat(String name, int seatNo) {
+	public static boolean bookSeat(String name, int seatNo) {
 		// Validate the name and seat number before book seat.
-		boolean validName = StringValidator.isValidString(name);
-		boolean validSeatNo = SeatNoValidator.isValidSeatNo(seatNo);
-		if (validName && validSeatNo) {
+		boolean booked = false;
+		if (StringValidator.isValidString(name) && SeatNoValidator.isValidSeatNo(seatNo)) {
 			bookingList.put(name, seatNo);// put the name and seat number to hash map
 			System.out.println("Successfully booked");
+			booked = true;
 		} else {
 			System.out.println("Invalid");
+			booked = false;
 		}
+		return booked;
 	}
 
 	/**
@@ -43,19 +45,6 @@ public class BookingManager {
 		System.out.println("---------Booking Status---------");
 		System.out.println("Number of booked seats------" + noOfBookedSeats);
 		System.out.println("Number of Available seats---" + (noOfSeats - noOfBookedSeats));
-	}
-
-	/**
-	 * This method is used to cancel the seat.
-	 */
-	public static void cancelSeat(String name, int seatNo) {
-		// Check name and seat no is already booked.
-		if (bookingList.containsKey(name) && bookingList.containsValue(seatNo)) {
-			bookingList.remove(name, seatNo);
-			System.out.println("Cancelled");
-		} else {
-			System.out.println("Entered name or seat number invalid");
-		}
 	}
 
 	/**

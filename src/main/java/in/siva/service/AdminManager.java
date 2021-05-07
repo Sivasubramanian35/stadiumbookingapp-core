@@ -31,7 +31,7 @@ public class AdminManager {
 	 * @param match
 	 * @return
 	 */
-	public static String getDate(String team1, String team2) {
+	public static String getMatchDate(String team1, String team2) {
 		String matchDate = "Not Available";
 		// Iterate the set matchWithDate
 		if (StringValidator.isValidString(team1) && StringValidator.isValidString(team2)) {

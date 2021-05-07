@@ -9,14 +9,25 @@ import in.siva.service.UserManager;
 public class UserLoginTest {
 
 	/**
-	 * Test with registered record.
+	 * Test with valid registered record.
 	 */
 	@Test
-	public void testWithRegisteredRecord() {
+	public void testWithValidRegisteredRecord() {
 		String userName = "sankar";
 		String password = "sankar123";
 		boolean loginStatus = UserManager.login(userName, password);
 		assertTrue(loginStatus);
+	}
+
+	/**
+	 * Test with invalid record.
+	 */
+	@Test
+	public void testWithInvalidData() {
+		String userName = "";
+		String password = "mani12345";
+		boolean loginStatus = UserManager.login(userName, password);
+		assertFalse(loginStatus);
 	}
 
 	/**
@@ -25,7 +36,7 @@ public class UserLoginTest {
 	@Test
 	public void testWithNotRegisteredRecord() {
 		String userName = "mani";
-		String password = "mani123";
+		String password = "mani12345";
 		boolean loginStatus = UserManager.login(userName, password);
 		assertFalse(loginStatus);
 	}

@@ -1,5 +1,8 @@
 package in.siva.servicetest;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import in.siva.service.BookingManager;
@@ -13,7 +16,8 @@ public class SeatBookingTest {
 	public void testWithInvalidName() {
 		String name = " ";
 		int seatNo = -12;
-		BookingManager.bookSeat(name, seatNo);
+		boolean booking = BookingManager.bookSeat(name, seatNo);
+		assertFalse(booking);
 
 	}
 
@@ -24,8 +28,8 @@ public class SeatBookingTest {
 	public void testWithValidName() {
 		String name = "siva";
 		int seatNo = 10;
-		BookingManager.bookSeat(name, seatNo);
-
+		boolean booking = BookingManager.bookSeat(name, seatNo);
+		assertTrue(booking);
 	}
 
 }

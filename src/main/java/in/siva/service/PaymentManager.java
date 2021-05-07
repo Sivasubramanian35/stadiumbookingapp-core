@@ -19,15 +19,4 @@ public class PaymentManager {
 		}
 	}
 
-	/**
-	 * This method is used to calculate the total amount
-	 * 
-	 * @param price
-	 * @param gst
-	 */
-	public static void totalPayment(int price, float gst) {
-		float totalAmount = price + gst;// Calculate total amount
-		System.out.println("Total Amount : Rs." + totalAmount);
-	}
-
 }

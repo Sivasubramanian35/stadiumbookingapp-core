@@ -7,23 +7,22 @@ import in.siva.service.PaymentManager;
 public class PaymentManagerTest {
 
 	/**
-	 * Test for Gst
+	 * Test for Invalid price
 	 */
 	@Test
-	public void testGst() {
-		int price = 1500;
+	public void testWithInvalidPrice() {
+		int price = -1000;
 		PaymentManager.gst(price);
 
 	}
 
 	/**
-	 * Test for total payment
+	 * Test for valid price
 	 */
 	@Test
-	public void testTotal() {
+	public void testWithValidPrice() {
 		int price = 1500;
-		float gst = 270;
-		PaymentManager.totalPayment(price, gst);
+		PaymentManager.gst(price);
 
 	}
 

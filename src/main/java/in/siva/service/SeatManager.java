@@ -19,7 +19,7 @@ public class SeatManager {
 	 * @param seatNo
 	 * @return
 	 */
-	public static void getPrice(int seatNo) {
+	public static void getSeatPrice(int seatNo) {
 		int price = 0;
 		boolean valid = true;
 		if (1 <= seatNo && seatNo <= 10) {

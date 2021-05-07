@@ -48,14 +48,15 @@ public class UserManager {
 	 */
 	public static boolean login(String name, String password) {
 		boolean loggedIn = false;
-		for (User user : userList) {
-			if (user.userName.equalsIgnoreCase(name) && user.password.equalsIgnoreCase(password)) {
-				System.out.println("Login successfull");
-				loggedIn = true;
-				break;
+		if (StringValidator.isValidString(name) && PasswordValidator.isValidPassword(password)) {
+			for (User user : userList) {
+				if (user.userName.equalsIgnoreCase(name) && user.password.equalsIgnoreCase(password)) {
+					System.out.println("Login successfull");
+					loggedIn = true;
+					break;
+				}
 			}
-		}
-		if (loggedIn) {
+		} else {
 			System.out.println("Invalid Login credentials");
 		}
 		return loggedIn;

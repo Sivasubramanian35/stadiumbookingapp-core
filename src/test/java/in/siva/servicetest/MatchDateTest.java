@@ -15,7 +15,7 @@ public class MatchDateTest {
 	public void testWithInvaildMatchName() {
 		String team1 = "";
 		String team2 = "kkr";
-		String date = AdminManager.getDate(team1, team2);
+		String date = AdminManager.getMatchDate(team1, team2);
 		assertEquals(date, "Not Available");
 
 	}
@@ -27,7 +27,7 @@ public class MatchDateTest {
 	public void testWithAvailableMatch() {
 		String team1 = "csk";
 		String team2 = "mi";
-		String date = AdminManager.getDate(team1, team2);
+		String date = AdminManager.getMatchDate(team1, team2);
 		assertEquals(date, "2021-05-03");
 	}
 
@@ -38,7 +38,7 @@ public class MatchDateTest {
 	public void testWithNotAvailableMatch() {
 		String team1 = "rcb";
 		String team2 = "kkr";
-		String date = AdminManager.getDate(team1, team2);
+		String date = AdminManager.getMatchDate(team1, team2);
 		assertEquals(date, "Not Available");
 	}
 
